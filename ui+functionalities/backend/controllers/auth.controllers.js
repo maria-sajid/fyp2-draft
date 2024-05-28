@@ -60,11 +60,22 @@ export const login = async (req, res) => {
     try {
         const {email, password} = req.body;
         const user = await User.findOne({email});
+        console.log("userfound ")
         const isPasswordCorrect = await bcrypt.compare(password, user?.password || ""); // comparing the passwords
 
-        if(!user || !isPasswordCorrect) {
-            return res.status(400).json({error:"Invalid user credentials"});
+        // if(!user || !isPasswordCorrect) {
+        //     return res.status(400).json({error:"Invalid user credentials"});
+        // }
+
+        if (!user) {
+            console.log("User not found");
+            return res.status(400).json({ error: "Invalid user" });
         }
+        if (!isPasswordCorrect) {
+            console.log("Password incorrect");
+            return res.status(400).json({ error: "Invalid user password" });
+        }
+        
 
         generateTokenAndSetCookie(user._id, res);
         res.status(200).json({
@@ -78,7 +89,7 @@ export const login = async (req, res) => {
 
     } catch (error) {
         console.log("Error in login controller", error.message);
-        res.status(500).json({eroor:"Internal server error"});
+        res.status(500).json({error:"Internal server error"});
     }
 
 };

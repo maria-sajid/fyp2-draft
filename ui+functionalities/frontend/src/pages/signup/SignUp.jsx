@@ -4,10 +4,10 @@ import useSignup from "../../hooks/useSignup";
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
-    username: " ",
-    email: " ",
-    password: " ",
-    confirmPassword: " ",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const { loading, signup } = useSignup();
