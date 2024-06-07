@@ -42,7 +42,7 @@ const NoChatSelected = () => {
       <div className="px-4 text-center sm:text-lg md:text-xl text-black font-semibold flex flex-col items-center gap-2">
         <p>Welcome {authUser.username}!</p>
         <p>Select a user to start a conversation</p>
-        <TiMessages className="text-3xl md:text-6xl text-center" />
+        <img src="/icon.png" alt="Logo" className="w-48 h-48" />
       </div>
     </div>
   );

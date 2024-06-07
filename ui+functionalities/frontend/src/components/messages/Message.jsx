@@ -10,6 +10,8 @@ const Message = ({ message }) => {
   const chatClassName = fromMe ? "chat-end" : "chat-start";
   const profile = fromMe ? authUser.profile : selectedConversation?.profile;
   const bubbleBgColor = fromMe ? "bg-blue-500" : "";
+  console.log(authUser);
+  console.log(authUser._id);
   return (
     <div className={`chat ${chatClassName}`}>
       <div className="chat-image avatar">
@@ -17,9 +19,7 @@ const Message = ({ message }) => {
           <img alt="Tailwind CSS chat bubble component" src={profile} />
         </div>
       </div>
-      <div
-        className={`chat-bubble text-black bg-blue-500 ${bubbleBgColor} pb-2`}
-      >
+      <div className={`chat-bubble text-black ${bubbleBgColor} pb-2`}>
         {message.message}
       </div>
       <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">
